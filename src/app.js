@@ -1,16 +1,16 @@
 const express = require("express");
 
 const app = express();
-// app.use("/",(req,res)=>{
-//     res.send("hello");
-// })
+const {adminAuth} = require("./middlewares/auth");
 
-app.use("/test",(req,res)=>{
-    res.send("tested the node");
+app.use("/admin",adminAuth)
+app.get("/user",(req,res)=>{
+    res.send("user data");
+})
+app.get("/admin/getAllData",(req,res)=>{
+    res.send(" All data");
 })
 
-app.use("/hello",(req,res)=>{
-    res.send("hello the node");
-})
+
 
 app.listen(3000);
